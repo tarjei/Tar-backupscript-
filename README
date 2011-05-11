@@ -1,0 +1,15 @@
+This is a simple fork of the backupscript found here: 
+http://www.joescat.com/backup/
+
+Usage:
+you can either modify the config values within the script - or create a separate config file.
+
+Then the script may be called with the path to the config file as its second parameter:
+./backup-incremental.sh  ./config.sh
+
+
+
+Changes: 
+1. extracted config to separate file
+2. changed sh to bash
+3. Modified the way dirs are defined
