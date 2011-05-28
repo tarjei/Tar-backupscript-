@@ -51,12 +51,6 @@ if [ $# -eq 1 ]
 then
    . $1
 fi
-if [ -z "$PS1" ]; then
-# not an interactive shell, assume we are running as a cronjob
-else
-    printConfig
-fi
-
 function printConfig() {
     cat <<EOD
     Starting backup of $COMPUTER with config:
@@ -64,12 +58,16 @@ function printConfig() {
     Backup directory: $BKDIR
 
     Directories to backup:
-    EOD
+EOD
     for element in $(seq 0 $((${#DIRS[@]} - 1)))
         do
         echo  "${DIRS[$element]}"
     done
 }
+if [ ! -z "$PS1" ]; then
+    printConfig
+fi
+
 
 DOW=`$DATE +%a`         # Day of the week e.g. Mon
 DOM=`$DATE +%d`         # Date of the Month e.g. 27
